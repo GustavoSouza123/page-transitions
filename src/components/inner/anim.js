@@ -1,3 +1,5 @@
+import { delay } from "motion";
+
 export const perspective = {
   initial: {
     scale: 1,
@@ -8,9 +10,9 @@ export const perspective = {
     y: 0,
   },
   exit: {
-    scale: 0.9,
-    y: -150,
-    opacity: 0.5,
+    scale: 1,
+    y: -100,
+    opacity: 0.8,
     transition: {
       duration: 1,
       ease: [0.76, 0, 0.24, 1],
@@ -19,14 +21,30 @@ export const perspective = {
 };
 
 export const slide = {
-  initial: {
-    y: '100vh',
+	initial: {
+		y: '100vh',
   },
   enter: {
-    y: '100vh',
+		y: '100vh',
   },
   exit: {
-    y: 0,
+		y: 0,
+    transition: {
+      duration: 1,
+			// delay: 0.5,
+      ease: [0.76, 0, 0.24, 1],
+    },
+  },
+};
+export const slide2 = {
+	initial: {
+		y: '100vh',
+  },
+  enter: {
+		y: '100vh',
+  },
+  exit: {
+		y: 0,
     transition: {
       duration: 1,
       ease: [0.76, 0, 0.24, 1],

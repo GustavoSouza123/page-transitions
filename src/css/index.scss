@@ -1,6 +1,6 @@
-@import '../components/inner/style.scss';
-@import '../components/stairs/style.scss';
-@import '../components/curve/style.scss';
+@use '../components/inner/style.scss' as style1;
+@use '../components/stairs/style.scss' as style2;
+@use '../components/curve/style.scss' as style3;
 
 * {
   box-sizing: border-box;

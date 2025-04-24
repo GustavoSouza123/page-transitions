@@ -1,7 +1,6 @@
 import React from 'react';
 import { motion } from 'motion/react';
 import { expand, opacity } from './anim';
-import Nav from '../Nav';
 
 const anim = (variants, custom = null) => {
   return {
@@ -13,7 +12,7 @@ const anim = (variants, custom = null) => {
   };
 };
 
-const numOfColumns = 5;
+const numOfColumns = 6;
 
 export default function Stairs({ children, backgroundColor }) {
   return (
@@ -24,7 +23,6 @@ export default function Stairs({ children, backgroundColor }) {
           return <motion.div key={i} {...anim(expand, numOfColumns - i)} />;
         })}
       </div>
-			<Nav />
       {children}
     </div>
   );

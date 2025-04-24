@@ -2,6 +2,8 @@ import React from 'react';
 import { Outlet } from 'react-router';
 import Inner from '../components/inner';
 import Stairs from '../components/stairs';
+import Curve from '../components/curve';
+import Nav from '../components/Nav';
 
 // const pageVariants = {
 //   initial: { opacity: 0, y: 20 },
@@ -19,8 +21,9 @@ export default function Page() {
     //   transition={{ duration: 0.5 }}
     // ></motion.div>
 
-    <Inner>
+    <Curve>
+      <Nav />
       <Outlet />
-    </Inner>
+    </Curve>
   );
 }
