@@ -21,9 +21,9 @@ export default function Page() {
     //   transition={{ duration: 0.5 }}
     // ></motion.div>
 
-    <Curve>
+    <Inner>
       <Nav />
       <Outlet />
-    </Curve>
+    </Inner>
   );
 }
