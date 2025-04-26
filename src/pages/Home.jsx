@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/all';
-import { span } from 'motion/react-client';
 
 export default function Home() {
   // const subtitle =
@@ -18,6 +17,8 @@ export default function Home() {
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
+
+    const sections = gsap.utils.toArray('.section');
 
     const tl1 = gsap.timeline({
       defaults: {
@@ -49,29 +50,44 @@ export default function Home() {
         '<0.3'
       );
 
-    const tl2 = gsap.timeline({
-      defaults: {
-        ease: 'expo.out',
-        duration: 0.5,
-      },
-      scrollTrigger: {
-        trigger: '.section2',
-        start: 'top center',
-				// scrub: 1
-      },
-    });
+    sections.forEach((section, index) => {
+      const paragraph = section.querySelectorAll('.paragraph .line .text');
 
-    tl2.to(
-      '.paragraph .line .text',
-      {
-        y: 0,
-        stagger: 0.005,
-        rotate: '0',
-        // delay: 0.2,
-        ease: 'expo.out',
-      },
-      '<'
-    );
+      if (index !== 0) {
+        ScrollTrigger.create({
+          trigger: section,
+          start: 'top top',
+          pin: true,
+          pinSpacing: false,
+					start: 'top 100px'
+        });
+
+        const tl2 = gsap.timeline({
+          defaults: {
+            ease: 'expo.out',
+          },
+          scrollTrigger: {
+            trigger: section,
+            start: 'top 35%',
+            end: 'bottom 70%',
+            toggleActions: 'play reverse play reverse',
+            markers: true,
+          },
+        });
+
+        tl2.to(
+          paragraph,
+          {
+            y: 0,
+            stagger: 0.005,
+            rotate: '0',
+            // delay: 0.2,
+            ease: 'expo.out',
+          },
+          '<'
+        );
+      }
+    });
   }, []);
 
   return (
@@ -107,6 +123,36 @@ export default function Home() {
       </div>
 
       <div className="section section2">
+        <div className="box paragraph">
+          {paragraph.map((word, index) => (
+            <div className="line" key={index}>
+              <div className="text">{word}&nbsp;</div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div className="section section3">
+        <div className="box paragraph">
+          {paragraph.map((word, index) => (
+            <div className="line" key={index}>
+              <div className="text">{word}&nbsp;</div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div className="section section4">
+        <div className="box paragraph">
+          {paragraph.map((word, index) => (
+            <div className="line" key={index}>
+              <div className="text">{word}&nbsp;</div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div className="section section5">
         <div className="box paragraph">
           {paragraph.map((word, index) => (
             <div className="line" key={index}>
