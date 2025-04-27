@@ -54,13 +54,13 @@ export default function Home() {
       const paragraph = section.querySelectorAll('.paragraph .line .text');
 
       if (index !== 0) {
-        ScrollTrigger.create({
-          trigger: section,
-          start: 'top top',
-          pin: true,
-          pinSpacing: false,
-					start: 'top 100px'
-        });
+        // ScrollTrigger.create({
+        //   trigger: section,
+        //   start: 'top top',
+        //   pin: true,
+        //   pinSpacing: false,
+        // 	start: 'top 100px'
+        // });
 
         const tl2 = gsap.timeline({
           defaults: {
@@ -70,8 +70,9 @@ export default function Home() {
             trigger: section,
             start: 'top 35%',
             end: 'bottom 70%',
-            toggleActions: 'play reverse play reverse',
-            markers: true,
+            // toggleActions: 'play reverse play reverse',
+            toggleActions: 'play none none reverse',
+            // markers: true,
           },
         });
 
@@ -88,6 +89,11 @@ export default function Home() {
         );
       }
     });
+
+    return () => {
+			// cleanup when component unmounts
+      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+    };
   }, []);
 
   return (
