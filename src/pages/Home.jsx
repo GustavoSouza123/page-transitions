@@ -39,33 +39,15 @@ export default function Home() {
         end: 'bottom 70%',
 
         onEnter: () => {
-          gsap.to('.content', {
-            backgroundColor: '#0a0a0a',
-            color: '#fff',
-          });
-
-          gsap.to('.menu-toggle', {
-            backgroundColor: '#fff',
-          });
-
-          gsap.to('.menu-toggle span', {
-            backgroundColor: '#0a0a0a',
-          });
+          gsap.to('.content', { backgroundColor: '#0a0a0a', color: '#fff', duration: 0.2 });
+          gsap.to('.menu-toggle', { backgroundColor: '#fff' });
+          gsap.to('.menu-toggle span', { backgroundColor: '#0a0a0a' });
         },
 
         onLeaveBack: () => {
-          gsap.to('.content', {
-            backgroundColor: '#fff',
-            color: '#0a0a0a',
-          });
-
-          gsap.to('.menu-toggle', {
-            backgroundColor: '#0a0a0a',
-          });
-
-          gsap.to('.menu-toggle span', {
-            backgroundColor: '#fff',
-          });
+          gsap.to('.content', { backgroundColor: '#fff', color: '#0a0a0a', duration: 0.2 });
+          gsap.to('.menu-toggle', { backgroundColor: '#0a0a0a' });
+          gsap.to('.menu-toggle span', { backgroundColor: '#fff' });
         },
       });
     });
@@ -77,33 +59,15 @@ export default function Home() {
         end: 'bottom 70%',
 
         onEnter: () => {
-          gsap.to('.content', {
-            backgroundColor: '#fff',
-            color: '#0a0a0a',
-          });
-
-          gsap.to('.menu-toggle', {
-            backgroundColor: '#0a0a0a',
-          });
-
-          gsap.to('.menu-toggle span', {
-            backgroundColor: '#fff',
-          });
+          gsap.to('.content', { backgroundColor: '#fff', color: '#0a0a0a', duration: 0.2 });
+          gsap.to('.menu-toggle', { backgroundColor: '#0a0a0a' });
+          gsap.to('.menu-toggle span', { backgroundColor: '#fff' });
         },
 
         onLeaveBack: () => {
-          gsap.to('.content', {
-            backgroundColor: '#0a0a0a',
-            color: '#fff',
-          });
-
-          gsap.to('.menu-toggle', {
-            backgroundColor: '#fff',
-          });
-
-          gsap.to('.menu-toggle span', {
-            backgroundColor: '#0a0a0a',
-          });
+          gsap.to('.content', { backgroundColor: '#0a0a0a', color: '#fff', duration: 0.2 });
+          gsap.to('.menu-toggle', { backgroundColor: '#fff' });
+          gsap.to('.menu-toggle span', { backgroundColor: '#0a0a0a' });
         },
       });
     });
@@ -142,26 +106,30 @@ export default function Home() {
     });
 
     tl1
-      .to(
-        '.title .line .text',
-        {
-          y: 0,
-          // stagger: 0.1,
-          rotate: '0',
-          delay: 0.5,
-          ease: 'expo.out',
-        },
-        '<'
-      )
+      .to('.title .line .text', {
+        y: 0,
+        // stagger: 0.1,
+        rotate: '0',
+        delay: 0.5,
+      })
       .to(
         '.subtitle .line .text',
         {
           y: 0,
-          stagger: 0.008,
+          stagger: 0.01,
           rotate: '0',
-          ease: 'expo.out',
         },
-        '<0.3'
+        '>-0.7'
+      )
+      .to(
+        '.header nav a',
+        {
+          y: 0,
+          stagger: 0.05,
+          duration: 0.7,
+          ease: 'power3.inOut',
+        },
+        '>-1'
       );
 
     // second section
