@@ -11,8 +11,6 @@
 
 body {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  // background-color: #0a0a0a;
-  // color: #fff;
 }
 
 ::-webkit-scrollbar {
@@ -106,12 +104,19 @@ body {
 
 /* content */
 
-// .content {}
+.content {
+	background-color: #0a0a0a;
+	color: #fff;
+}
 
 .section {
   height: 100vh;
   padding: 32px;
 	background-color: transparent;
+
+	&.section1 {
+		height: calc(100vh - 80px);
+	}
 
   &.section2 {
     flex-direction: column;

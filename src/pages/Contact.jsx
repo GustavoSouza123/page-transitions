@@ -1,6 +1,35 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/all';
 
 export default function Contact() {
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+
+    const tl1 = gsap.timeline({
+      defaults: {
+        ease: 'expo.out',
+        duration: 1,
+      },
+    });
+
+    tl1.to(
+      '.header nav a',
+      {
+        y: 0,
+        stagger: 0.05,
+        duration: 0.7,
+        ease: 'power3.inOut',
+      },
+      '>'
+    );
+
+    return () => {
+      // cleanup when component unmounts
+      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+    };
+  }, []);
+
   return (
     <div className="content">
       <div className="section section1">
@@ -26,6 +55,8 @@ export default function Contact() {
           </p>
         </div>
       </div>
+
+      <div className="section section2"></div>
     </div>
   );
 }

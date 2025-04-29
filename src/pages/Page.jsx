@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Outlet } from 'react-router';
 import Inner from '../components/inner';
 import Stairs from '../components/stairs';
 import Curve from '../components/curve';
 import Nav from '../components/Nav';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/all';
 
 // const pageVariants = {
 //   initial: { opacity: 0, y: 20 },
@@ -12,6 +14,39 @@ import Nav from '../components/Nav';
 // };
 
 export default function Page() {
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+
+    // menu toggle button
+
+    ScrollTrigger.create({
+      trigger: '.section2',
+      start: 'top 70%',
+      end: 'bottom 70%',
+
+      onEnter: () => {
+        gsap.to('.menu-toggle', {
+          x: 0,
+          ease: 'expo.out',
+          duration: 0.5,
+        });
+      },
+
+      onLeaveBack: () => {
+        gsap.to('.menu-toggle', {
+          x: 100,
+          ease: 'expo.out',
+          duration: 0.5,
+        });
+      },
+    });
+
+    return () => {
+      // cleanup when component unmounts
+      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+    };
+  }, []);
+
   return (
     // <motion.div
     //   variants={pageVariants}

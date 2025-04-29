@@ -72,30 +72,6 @@ export default function Home() {
       });
     });
 
-    // menu toggle button
-
-    ScrollTrigger.create({
-      trigger: '.section2',
-      start: 'top 70%',
-      end: 'bottom 70%',
-
-      onEnter: () => {
-        gsap.to('.menu-toggle', {
-          x: 0,
-          ease: 'expo.out',
-          duration: 0.5,
-        });
-      },
-
-      onLeaveBack: () => {
-        gsap.to('.menu-toggle', {
-          x: 100,
-          ease: 'expo.out',
-          duration: 0.5,
-        });
-      },
-    });
-
     // first section
 
     const tl1 = gsap.timeline({
@@ -148,7 +124,7 @@ export default function Home() {
 
     tl2.to('.section2 .paragraph .line .text', {
       y: 0,
-      stagger: 0.015,
+      stagger: 0.01,
       rotate: '0',
       // ease: 'power2.out'
       // ease: CustomEase.create("custom", "M0,0 C0.126,0.382 0.146,0.676 0.304,0.824 0.496,1.004 0.818,1.001 1,1 "),
