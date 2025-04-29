@@ -2,10 +2,10 @@ import React, { useEffect } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/all';
 
+gsap.registerPlugin(ScrollTrigger);
+
 export default function Contact() {
   useEffect(() => {
-    gsap.registerPlugin(ScrollTrigger);
-
     const tl1 = gsap.timeline({
       defaults: {
         ease: 'expo.out',

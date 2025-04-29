@@ -1,25 +1,9 @@
 import React, { useState } from 'react';
-import { NavLink } from 'react-router';
 import gsap from 'gsap';
+import Navigation from './Navigation';
 
-export default function Nav() {
+export default function Menu() {
   const [isOpen, setIsOpen] = useState();
-
-  const toggleOpen = () => {
-    setIsOpen(!isOpen);
-
-    toggleMenuBtnColors(isOpen);
-
-    if (!isOpen) {
-      gsap.to('body', { overflow: 'hidden' });
-      gsap.to('.menu', { x: 0, duration: 0.7, ease: 'power3.inOut' });
-      gsap.to('.menu nav a', { x: 0, stagger: 0.05, duration: 0.7, delay: 0.1, ease: 'power3.inOut' });
-    } else {
-      gsap.to('body', { overflow: 'auto' });
-      gsap.to('.menu', { x: 650, duration: 0.7, delay: 0.2, ease: 'power3.inOut' });
-      gsap.to('.menu nav a', { x: 150, stagger: 0.05, duration: 0.7, ease: 'power3.inOut' });
-    }
-  };
 
   const toggleMenuBtnColors = (isOpen) => {
     if (document.querySelector('.content').style.backgroundColor.includes('255')) {
@@ -49,11 +33,31 @@ export default function Nav() {
     gsap.to('.menu-toggle span', { backgroundColor: '#fff' });
   };
 
+  const toggleOpen = () => {
+    setIsOpen(!isOpen);
+
+    toggleMenuBtnColors(isOpen);
+
+    if (!isOpen) {
+      gsap.to('body', { overflow: 'hidden' });
+      gsap.to('.menu', { x: 0, duration: 0.7, ease: 'power3.inOut' });
+      gsap.to('.menu nav a', { x: 0, stagger: 0.05, duration: 0.7, delay: 0.1, ease: 'power3.inOut' });
+    } else {
+      gsap.to('body', { overflow: 'auto' });
+      gsap.to('.menu', { x: 650, duration: 0.7, delay: 0.2, ease: 'power3.inOut' });
+      gsap.to('.menu nav a', { x: 150, stagger: 0.05, duration: 0.7, ease: 'power3.inOut' });
+    }
+  };
+
+  {
+    /* to do: delay navigation to close menu and scroll up */
+  }
+  const handleMenuClick = () => {
+    toggleOpen();
+  };
+
   return (
     <>
-      <div className="header">
-        <Navigation />
-      </div>
       <div className="menu-toggle" onClick={toggleOpen}>
         <div className="icon">
           <span></span>
@@ -62,19 +66,8 @@ export default function Nav() {
         </div>
       </div>
       <div className="menu">
-        <Navigation />
+        <Navigation onClick={handleMenuClick} />
       </div>
     </>
-  );
-}
-
-function Navigation() {
-  return (
-    <nav>
-      <NavLink to="/">Home</NavLink>
-      <NavLink to="/about">About</NavLink>
-      <NavLink to="/projects">Projects</NavLink>
-      <NavLink to="/contact">Contact</NavLink>
-    </nav>
   );
 }

@@ -2,6 +2,8 @@ import React, { useEffect } from 'react';
 import gsap from 'gsap';
 import { CustomEase, ScrollTrigger } from 'gsap/all';
 
+gsap.registerPlugin(ScrollTrigger, CustomEase);
+
 export default function Home() {
   // const subtitle =
   //   "I'm a web developer and tech enthusiast with a deep passion for both human and programming languages.".split(' ');
@@ -25,30 +27,30 @@ export default function Home() {
     );
 
   useEffect(() => {
-    gsap.registerPlugin(ScrollTrigger);
-
-    // change page background
+    // change page background on scroll
 
     const darkSections = document.querySelectorAll('.section.dark');
     const whiteSections = document.querySelectorAll('.section.white');
+
+		const setDarkTheme = () => {
+      gsap.to('.content', { backgroundColor: '#0a0a0a', color: '#fff', duration: 0.2 });
+      gsap.to('.menu-toggle', { backgroundColor: '#fff' });
+      gsap.to('.menu-toggle span', { backgroundColor: '#0a0a0a' });
+    };
+
+    const setLightTheme = () => {
+      gsap.to('.content', { backgroundColor: '#fff', color: '#0a0a0a', duration: 0.2 });
+      gsap.to('.menu-toggle', { backgroundColor: '#0a0a0a' });
+      gsap.to('.menu-toggle span', { backgroundColor: '#fff' });
+    };
 
     darkSections.forEach((section) => {
       ScrollTrigger.create({
         trigger: section,
         start: 'top 35%',
         end: 'bottom 70%',
-
-        onEnter: () => {
-          gsap.to('.content', { backgroundColor: '#0a0a0a', color: '#fff', duration: 0.2 });
-          gsap.to('.menu-toggle', { backgroundColor: '#fff' });
-          gsap.to('.menu-toggle span', { backgroundColor: '#0a0a0a' });
-        },
-
-        onLeaveBack: () => {
-          gsap.to('.content', { backgroundColor: '#fff', color: '#0a0a0a', duration: 0.2 });
-          gsap.to('.menu-toggle', { backgroundColor: '#0a0a0a' });
-          gsap.to('.menu-toggle span', { backgroundColor: '#fff' });
-        },
+        onEnter: setDarkTheme,
+        onLeaveBack: setLightTheme,
       });
     });
 
@@ -57,18 +59,8 @@ export default function Home() {
         trigger: section,
         start: 'top 35%',
         end: 'bottom 70%',
-
-        onEnter: () => {
-          gsap.to('.content', { backgroundColor: '#fff', color: '#0a0a0a', duration: 0.2 });
-          gsap.to('.menu-toggle', { backgroundColor: '#0a0a0a' });
-          gsap.to('.menu-toggle span', { backgroundColor: '#fff' });
-        },
-
-        onLeaveBack: () => {
-          gsap.to('.content', { backgroundColor: '#0a0a0a', color: '#fff', duration: 0.2 });
-          gsap.to('.menu-toggle', { backgroundColor: '#fff' });
-          gsap.to('.menu-toggle span', { backgroundColor: '#0a0a0a' });
-        },
+        onEnter: setLightTheme,
+        onLeaveBack: setDarkTheme,
       });
     });
 
@@ -152,14 +144,6 @@ export default function Home() {
       });
 
       if (index !== 0 && index !== 1) {
-        // ScrollTrigger.create({
-        //   trigger: section,
-        //   start: 'top top',
-        //   pin: true,
-        //   pinSpacing: false,
-        // 	start: 'top 100px'
-        // });
-
         sectionsTl.to(
           paragraph,
           {

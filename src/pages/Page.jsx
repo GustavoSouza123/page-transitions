@@ -3,9 +3,11 @@ import { Outlet } from 'react-router';
 import Inner from '../components/inner';
 import Stairs from '../components/stairs';
 import Curve from '../components/curve';
-import Nav from '../components/Nav';
+import Header from '../components/Navigation/Header';
+import Menu from '../components/Navigation/Menu';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/all';
+import SmoothScroll from '../components/SmoothScroll';
 
 // const pageVariants = {
 //   initial: { opacity: 0, y: 20 },
@@ -13,10 +15,10 @@ import { ScrollTrigger } from 'gsap/all';
 //   exit: { opacity: 0, y: -20 },
 // };
 
+gsap.registerPlugin(ScrollTrigger);
+
 export default function Page() {
   useEffect(() => {
-    gsap.registerPlugin(ScrollTrigger);
-
     // menu toggle button
 
     ScrollTrigger.create({
@@ -56,9 +58,14 @@ export default function Page() {
     //   transition={{ duration: 0.5 }}
     // ></motion.div>
 
-    <Inner>
-      <Nav />
-      <Outlet />
-    </Inner>
+    <>
+      <Menu />
+      <SmoothScroll>
+        <Inner>
+          <Header />
+          <Outlet />
+        </Inner>
+      </SmoothScroll>
+    </>
   );
 }
