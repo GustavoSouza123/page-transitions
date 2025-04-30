@@ -13,7 +13,7 @@ export default function SmoothScroll({ children }) {
 
     const smoothScroll = () => {
       targetY.current = window.scrollY;
-      scrollY.current += (targetY.current - scrollY.current) * 0.1; // Damping factor
+      scrollY.current += (targetY.current - scrollY.current) * 0.125; // damping factor
 
       container.style.transform = `translateY(-${scrollY.current}px)`;
       requestAnimationFrame(smoothScroll);

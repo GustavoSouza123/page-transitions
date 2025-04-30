@@ -1,21 +1,23 @@
 import React from 'react';
 import { NavLink } from 'react-router';
+import NavItem from './NavItem';
 
-export default function Navigation({ onClick }) {
-  return (
+export default function Navigation({ parent }) {
+  return parent === 'header' ? (
     <nav>
-      <NavLink to="/" onClick={onclick}>
-        Home
-      </NavLink>
-      <NavLink to="/about" onClick={onclick}>
-        About
-      </NavLink>
-      <NavLink to="/projects" onClick={onclick}>
-        Projects
-      </NavLink>
-      <NavLink to="/contact" onClick={onclick}>
-        Contact
-      </NavLink>
+      <NavLink to="/">Home</NavLink>
+      <NavLink to="/about">About</NavLink>
+      <NavLink to="/projects">Projects</NavLink>
+      <NavLink to="/contact">Contact</NavLink>
     </nav>
+  ) : parent === 'menu' ? (
+    <nav>
+      <NavItem href="/">Home</NavItem>
+      <NavItem href="/about">About</NavItem>
+      <NavItem href="/projects">Projects</NavItem>
+      <NavItem href="/contact">Contact</NavItem>
+    </nav>
+  ) : (
+    <div>Error</div>
   );
 }

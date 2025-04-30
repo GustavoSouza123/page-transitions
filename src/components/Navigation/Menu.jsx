@@ -41,19 +41,12 @@ export default function Menu() {
     if (!isOpen) {
       gsap.to('body', { overflow: 'hidden' });
       gsap.to('.menu', { x: 0, duration: 0.7, ease: 'power3.inOut' });
-      gsap.to('.menu nav a', { x: 0, stagger: 0.05, duration: 0.7, delay: 0.1, ease: 'power3.inOut' });
+      gsap.to('.menu nav .item', { x: 0, stagger: 0.05, duration: 0.7, delay: 0.1, ease: 'power3.inOut' });
     } else {
       gsap.to('body', { overflow: 'auto' });
       gsap.to('.menu', { x: 650, duration: 0.7, delay: 0.2, ease: 'power3.inOut' });
-      gsap.to('.menu nav a', { x: 150, stagger: 0.05, duration: 0.7, ease: 'power3.inOut' });
+      gsap.to('.menu nav .item', { x: 150, stagger: 0.05, duration: 0.7, ease: 'power3.inOut' });
     }
-  };
-
-  {
-    /* to do: delay navigation to close menu and scroll up */
-  }
-  const handleMenuClick = () => {
-    toggleOpen();
   };
 
   return (
@@ -66,7 +59,7 @@ export default function Menu() {
         </div>
       </div>
       <div className="menu">
-        <Navigation onClick={handleMenuClick} />
+        <Navigation parent="menu" />
       </div>
     </>
   );

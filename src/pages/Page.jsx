@@ -1,12 +1,12 @@
 import React, { useEffect } from 'react';
 import { Outlet } from 'react-router';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/all';
 import Inner from '../components/inner';
 import Stairs from '../components/stairs';
 import Curve from '../components/curve';
 import Header from '../components/Navigation/Header';
 import Menu from '../components/Navigation/Menu';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/all';
 import SmoothScroll from '../components/SmoothScroll';
 
 // const pageVariants = {

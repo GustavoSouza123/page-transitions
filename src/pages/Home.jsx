@@ -32,7 +32,7 @@ export default function Home() {
     const darkSections = document.querySelectorAll('.section.dark');
     const whiteSections = document.querySelectorAll('.section.white');
 
-		const setDarkTheme = () => {
+    const setDarkTheme = () => {
       gsap.to('.content', { backgroundColor: '#0a0a0a', color: '#fff', duration: 0.2 });
       gsap.to('.menu-toggle', { backgroundColor: '#fff' });
       gsap.to('.menu-toggle span', { backgroundColor: '#0a0a0a' });
@@ -44,25 +44,25 @@ export default function Home() {
       gsap.to('.menu-toggle span', { backgroundColor: '#fff' });
     };
 
-    darkSections.forEach((section) => {
-      ScrollTrigger.create({
-        trigger: section,
-        start: 'top 35%',
-        end: 'bottom 70%',
-        onEnter: setDarkTheme,
-        onLeaveBack: setLightTheme,
-      });
-    });
+    // darkSections.forEach((section) => {
+    //   ScrollTrigger.create({
+    //     trigger: section,
+    //     start: 'top 35%',
+    //     end: 'bottom 70%',
+    //     onEnter: setDarkTheme,
+    //     onLeaveBack: setLightTheme,
+    //   });
+    // });
 
-    whiteSections.forEach((section) => {
-      ScrollTrigger.create({
-        trigger: section,
-        start: 'top 35%',
-        end: 'bottom 70%',
-        onEnter: setLightTheme,
-        onLeaveBack: setDarkTheme,
-      });
-    });
+    // whiteSections.forEach((section) => {
+    //   ScrollTrigger.create({
+    //     trigger: section,
+    //     start: 'top 35%',
+    //     end: 'bottom 70%',
+    //     onEnter: setLightTheme,
+    //     onLeaveBack: setDarkTheme,
+    //   });
+    // });
 
     // first section
 
@@ -118,6 +118,7 @@ export default function Home() {
       y: 0,
       stagger: 0.01,
       rotate: '0',
+      delay: 0.2,
       // ease: 'power2.out'
       // ease: CustomEase.create("custom", "M0,0 C0.126,0.382 0.146,0.676 0.304,0.824 0.496,1.004 0.818,1.001 1,1 "),
       ease: CustomEase.create('custom', 'M0,0 C0.126,0.382 0.063,0.623 0.221,0.771 0.413,0.951 0.818,1.001 1,1 '),

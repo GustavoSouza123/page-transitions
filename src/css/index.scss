@@ -36,87 +36,94 @@ body {
     a {
       color: #fff;
       text-decoration: none;
-			transform: translateY(-80px);
+      transform: translateY(-80px);
     }
   }
 }
 
 .menu-toggle {
   position: fixed;
-	z-index: 999;
+  z-index: 999;
   top: 30px;
   right: 30px;
   width: 50px;
   height: 50px;
   border-radius: 50%;
   background: #fff;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	cursor: pointer;
-	transform: translateX(100px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transform: translateX(100px);
 
   .icon {
-		width: 50%;
-		height: 30%;
+    width: 50%;
+    height: 30%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 
     span {
       position: relative;
-			display: block;
-			width: 100%;
-			height: 2px;
-			background-color: #0a0a0a;
+      display: block;
+      width: 100%;
+      height: 2px;
+      background-color: #0a0a0a;
     }
   }
 }
 
 .menu {
-	position: fixed;
-	z-index: 99;
-	top: 0;
-	bottom: 0;
-	right: 0;
-	width: 600px;
-	background-color: #fff;
-	display: flex;
-	flex-direction: column;
-	padding: 72px;
-	transform: translateX(650px);
+  position: fixed;
+  z-index: 99;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 600px;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  padding: 72px;
+  transform: translateX(650px);
 
-	nav {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		gap: 24px;
-		height: 100%;
+  nav {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+		align-items: flex-start;
+    gap: 24px;
+    height: 100%;
 
-		a {
-			font-size: 56px;
-			text-decoration: none;
-			color: #0a0a0a;
-			transform: translateX(150px);
-		}
-	}
+    .item {
+      transform: translateX(50px);
+
+      a {
+				position: relative;
+				display: block;
+        font-size: 56px;
+        text-decoration: none;
+        color: #0a0a0a;
+				overflow: hidden;
+      }
+    }
+  }
 }
 
 /* content */
 
 .content {
-	background-color: #0a0a0a;
-	color: #fff;
+  background-color: #0a0a0a;
+  color: #fff;
 }
 
 .section {
   height: 100vh;
   padding: 32px;
-	background-color: transparent;
+  background-color: transparent;
 
-	&.section1 {
-		height: calc(100vh - 80px);
-	}
+  &.section1 {
+    height: calc(100vh - 80px);
+  }
 
   &.section2 {
     flex-direction: column;
@@ -128,7 +135,7 @@ body {
       line-height: 56px;
 
       .line {
-				padding-bottom: 5px;
+        padding-bottom: 5px;
 
         .text {
           font-size: 48px !important;
