@@ -7,7 +7,7 @@ export default function NavItem({ children, href }) {
 
   /* to do: delay navigation to close menu and scroll up */
   const handleMenuClick = () => {
-    toggleOpen();
+    // toggleOpen();
   };
 
   const transition = {

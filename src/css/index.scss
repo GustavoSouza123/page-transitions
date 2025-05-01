@@ -34,9 +34,12 @@ body {
     gap: 36px;
 
     a {
-      color: #fff;
+      position: relative;
+      display: block;
       text-decoration: none;
-      transform: translateY(-80px);
+      color: #fff;
+      overflow: hidden;
+			transform: translateY(-80px);
     }
   }
 }
@@ -90,7 +93,7 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
-		align-items: flex-start;
+    align-items: flex-start;
     gap: 24px;
     height: 100%;
 
@@ -98,12 +101,12 @@ body {
       transform: translateX(150px);
 
       a {
-				position: relative;
-				display: block;
+        position: relative;
+        display: block;
         font-size: 56px;
         text-decoration: none;
         color: #0a0a0a;
-				overflow: hidden;
+        overflow: hidden;
       }
     }
   }
