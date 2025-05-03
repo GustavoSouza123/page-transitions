@@ -2,12 +2,14 @@ import React, { useEffect } from 'react';
 import { Outlet } from 'react-router';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/all';
+import { ScrollSmoother } from 'gsap/ScrollSmoother';
 import Inner from '../components/inner';
 import Stairs from '../components/stairs';
 import Curve from '../components/curve';
 import Header from '../components/Navigation/Header';
 import Menu from '../components/Navigation/Menu';
 import SmoothScroll from '../components/SmoothScroll';
+import Lenis from 'lenis';
 
 // const pageVariants = {
 //   initial: { opacity: 0, y: 20 },
@@ -15,10 +17,26 @@ import SmoothScroll from '../components/SmoothScroll';
 //   exit: { opacity: 0, y: -20 },
 // };
 
-gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
 
 export default function Page() {
   useEffect(() => {
+    // ScrollSmoother.create({
+    //   smooth: 1,
+    //   effects: true,
+    // });
+    //   smoothTouch: 0.1,
+
+    const lenis = new Lenis();
+
+    function raf(time) {
+      lenis.raf(time);
+
+      requestAnimationFrame(raf);
+    }
+
+    requestAnimationFrame(raf);
+
     // menu toggle button
 
     ScrollTrigger.create({
@@ -37,7 +55,6 @@ export default function Page() {
       onLeaveBack: () => {
         gsap.to('.menu-toggle', {
           x: 100,
-          ease: 'expo.out',
           duration: 0.5,
         });
       },
@@ -58,14 +75,10 @@ export default function Page() {
     //   transition={{ duration: 0.5 }}
     // ></motion.div>
 
-    <>
+    <Inner>
+      <Header />
       <Menu />
-      <SmoothScroll>
-        <Inner>
-          <Header />
-          <Outlet />
-        </Inner>
-      </SmoothScroll>
-    </>
+      <Outlet />
+    </Inner>
   );
 }
