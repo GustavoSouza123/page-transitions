@@ -24,8 +24,8 @@ export default function Page() {
     // ScrollSmoother.create({
     //   smooth: 1,
     //   effects: true,
-    // });
     //   smoothTouch: 0.1,
+    // });
 
     const lenis = new Lenis();
 

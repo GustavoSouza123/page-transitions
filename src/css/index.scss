@@ -20,6 +20,8 @@ body {
 /* header and navigation */
 
 .header {
+  position: relative;
+  z-index: 999;
   width: 100%;
   height: 80px;
   background-color: transparent;
@@ -119,22 +121,24 @@ body {
   color: #fff;
 
   .section {
-    min-height: 100vh;
+    height: 100vh;
     padding: 32px;
     background-color: transparent;
-  }
 
-  // h1 {
-  // 	margin-bottom: 32px;
-  // }
-}
-
-.content.home {
-  .section {
     &.section1 {
       height: calc(100vh - 80px);
     }
+  }
 
+  h1 {
+    margin-bottom: 32px;
+  }
+}
+
+/* home */
+
+.content.home {
+  .section {
     &.section2 {
       flex-direction: column;
       gap: 48px;
@@ -219,10 +223,13 @@ body {
   }
 }
 
+/* about */
+
 .content.about {
   .section2 {
     .body {
       margin-left: 10vw;
+      padding-top: 32px;
 
       h1 {
         margin: 0px;
@@ -287,6 +294,60 @@ body {
     }
   }
 }
+
+/* projects */
+
+.content.projects {
+	position: relative;
+	top: -80px;
+
+  .section {
+    height: 100vh;
+    position: relative;
+		top: 0;
+    background-color: #0a0a0a;
+
+		&.section2,
+		&.section4 {
+			z-index: 99;
+		}
+
+    &.section1 {
+      padding-top: calc(30px + 80px);
+
+      h1,
+      .body {
+        position: relative;
+        z-index: 999;
+      }
+    }
+
+		&.section3 {
+			.image {
+				height: 150vh;
+				background: red;
+			}
+		}
+  }
+
+  .image {
+    position: absolute;
+    z-index: 9;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 100vh;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+}
+
+/* slide */
 
 .slide {
   position: relative;

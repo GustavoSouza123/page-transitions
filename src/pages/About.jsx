@@ -43,8 +43,8 @@ export default function About() {
       },
     })
     .from(title1Ref.current, { y: -50 }, 0)
-		.to(imagesRef.current[1], { y: -150 }, 0)
-		.to(imagesRef.current[2], { y: -255 }, 0);
+		.to(imagesRef.current[1], { y: -150, ease: 'none' }, 0)
+		.to(imagesRef.current[2], { y: -255, ease: 'none' }, 0);
 
     lettersRef.current.forEach((letter, i) => {
       tl2.from(
