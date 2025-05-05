@@ -55,7 +55,7 @@ export default function Projects() {
       })
       .to(image2Ref.current, { y: -400, ease: 'none' });
 
-		const tl4 = gsap
+    const tl4 = gsap
       .timeline({
         scrollTrigger: {
           trigger: section5Ref.current,
@@ -64,7 +64,7 @@ export default function Projects() {
           scrub: true,
         },
       })
-    .to(image3Ref.current, { y: 200, ease: 'none' });
+      .to(image3Ref.current, { y: 200, ease: 'none' });
 
     return () => {
       // cleanup when component unmounts
