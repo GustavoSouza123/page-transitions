@@ -17,7 +17,7 @@ body {
   display: none;
 }
 
-/* header */
+/* header and navigation */
 
 .header {
   width: 100%;
@@ -117,95 +117,172 @@ body {
 .content {
   background-color: #0a0a0a;
   color: #fff;
-}
 
-.section {
-  height: 100vh;
-  padding: 32px;
-  background-color: transparent;
-
-  &.section1 {
-    height: calc(100vh - 80px);
+  .section {
+    min-height: 100vh;
+    padding: 32px;
+    background-color: transparent;
   }
 
-  &.section2 {
-    flex-direction: column;
-    gap: 48px;
+  // h1 {
+  // 	margin-bottom: 32px;
+  // }
+}
+
+.content.home {
+  .section {
+    &.section1 {
+      height: calc(100vh - 80px);
+    }
+
+    &.section2 {
+      flex-direction: column;
+      gap: 48px;
+
+      .box {
+        max-width: 800px;
+        justify-content: flex-start !important;
+        line-height: 56px;
+
+        .line {
+          padding-bottom: 5px;
+
+          .text {
+            font-size: 48px !important;
+            font-weight: 500;
+            transform: translateY(120%) rotate(0deg);
+          }
+        }
+      }
+    }
+
+    &.section3 {
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    &:not(.section1) {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      .box {
+        justify-content: center;
+      }
+    }
 
     .box {
-      max-width: 800px;
-      justify-content: flex-start !important;
-      line-height: 56px;
+      display: flex;
+      flex-wrap: wrap;
+      text-wrap: nowrap;
+      overflow: hidden;
 
       .line {
-        padding-bottom: 5px;
+        display: block;
+        overflow: hidden;
 
         .text {
-          font-size: 48px !important;
-          font-weight: 500;
+          display: block;
+          margin-top: -6px;
+        }
+      }
+    }
+
+    .title {
+      margin-bottom: 50px;
+
+      .line {
+        .text {
+          font-size: 64px;
           transform: translateY(120%) rotate(0deg);
         }
       }
     }
+
+    .subtitle {
+      .line {
+        .text {
+          font-size: 42px;
+          transform: translateY(200%) rotate(0deg);
+        }
+      }
+    }
+
+    .paragraph {
+      .line {
+        .text {
+          font-size: 32px;
+          transform: translateY(800%) rotate(0deg);
+        }
+      }
+    }
   }
+}
 
-  &.section3 {
-		flex-direction: column;
-    overflow: hidden;
-  }
+.content.about {
+  .section2 {
+    .body {
+      margin-left: 10vw;
 
-  &:not(.section1) {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+      h1 {
+        margin: 0px;
+        margin-top: 10px;
+        font-size: 5vw;
+        line-height: 5vw;
+        text-transform: uppercase;
+      }
 
-    .box {
+      p {
+        color: white;
+        margin: 0px;
+        margin-top: 10px;
+        font-size: 3vw;
+        text-transform: uppercase;
+        span {
+          position: relative;
+        }
+      }
+    }
+
+    .images {
+      position: relative;
+      display: flex;
       justify-content: center;
-    }
-  }
+      width: 100%;
+      margin-top: 5vh;
 
-  .box {
-    display: flex;
-    flex-wrap: wrap;
-    text-wrap: nowrap;
-    overflow: hidden;
+      .image-container {
+        position: absolute;
+        width: 200px;
+        height: 200px;
 
-    .line {
-      display: block;
-      overflow: hidden;
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
 
-      .text {
-        display: block;
-        margin-top: -6px;
-      }
-    }
-  }
+        &:nth-of-type(1) {
+          height: 60vh;
+          width: 50vh;
+          z-index: 1;
+        }
 
-  .title {
-    margin-bottom: 50px;
+        &:nth-of-type(2) {
+          left: 55vw;
+          top: 15vh;
+          height: 40vh;
+          width: 30vh;
+          z-index: 2;
+        }
 
-    .line {
-      .text {
-        font-size: 64px;
-        transform: translateY(120%) rotate(0deg);
-      }
-    }
-  }
-
-  .subtitle {
-    .line {
-      .text {
-        font-size: 42px;
-        transform: translateY(200%) rotate(0deg);
-      }
-    }
-  }
-
-  .paragraph {
-    .line {
-      .text {
-        font-size: 32px;
-        transform: translateY(800%) rotate(0deg);
+        &:nth-of-type(3) {
+          left: 25vw;
+          top: 40vh;
+          height: 25vh;
+          width: 20vh;
+          z-index: 3;
+        }
       }
     }
   }
@@ -214,11 +291,11 @@ body {
 .slide {
   position: relative;
   display: flex;
-	align-items: center;
+  align-items: center;
   white-space: nowrap;
 
   .phrase {
-		display: flex;
+    display: flex;
     gap: 20px;
     align-items: center;
     padding: 0 32px;

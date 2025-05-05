@@ -175,7 +175,7 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="content">
+    <div className="content home">
       {/* <h1>Home Page</h1>
       <div className="body">
         <p>

@@ -1,10 +1,20 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/all';
+import Picture1 from '../../public/landscape1.jpg';
+import Picture2 from '../../public/landscape2.jpg';
+import Picture3 from '../../public/landscape3.jpg';
 
 gsap.registerPlugin(ScrollTrigger);
 
 export default function About() {
+  const images = [Picture1, Picture2, Picture3];
+  const word = 'with gsap';
+  const section2Ref = useRef(null);
+  const title1Ref = useRef(null);
+  const lettersRef = useRef([]);
+  const imagesRef = useRef([]);
+
   useEffect(() => {
     const tl1 = gsap.timeline({
       defaults: {
@@ -24,6 +34,28 @@ export default function About() {
       '>'
     );
 
+    const tl2 = gsap.timeline({
+      scrollTrigger: {
+        trigger: section2Ref.current,
+				start: 'top 70%',
+        end: 'bottom 50%',
+        scrub: true,
+      },
+    })
+    .from(title1Ref.current, { y: -50 }, 0)
+		.to(imagesRef.current[1], { y: -150 }, 0)
+		.to(imagesRef.current[2], { y: -255 }, 0);
+
+    lettersRef.current.forEach((letter, i) => {
+      tl2.from(
+        letter,
+        {
+          top: Math.floor(Math.random() * -75) - 25,
+        },
+        0
+      );
+    });
+
     return () => {
       // cleanup when component unmounts
       ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
@@ -31,7 +63,7 @@ export default function About() {
   }, []);
 
   return (
-    <div className="content">
+    <div className="content about">
       <div className="section section1">
         <h1>About Page</h1>
         <div className="body">
@@ -45,30 +77,37 @@ export default function About() {
             venenatis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus congue lorem id lacus
             efficitur tempus. Proin bibendum vitae mi nec fermentum.
           </p>
-
-          <p>
-            Phasellus quis mi mi. Donec semper massa ac suscipit bibendum. Maecenas tincidunt tortor sed aliquam
-            vestibulum. Praesent ullamcorper enim id magna posuere tincidunt. Sed viverra, justo ac sollicitudin auctor,
-            risus libero ultrices purus, ut egestas massa nibh ac tellus. Aliquam vulputate sapien a maximus tincidunt.
-            Integer quis volutpat arcu. Suspendisse congue cursus lorem, non blandit arcu rutrum at. Morbi tempor nulla
-            ut egestas laoreet. Suspendisse ut feugiat neque. Duis et consequat ligula, et sodales odio.
-          </p>
-
-          <p>
-            Curabitur porttitor nisi ipsum, et tincidunt ex molestie non. Maecenas suscipit, est at dignissim accumsan,
-            leo lorem imperdiet neque, quis facilisis dui erat eu velit. Maecenas dictum eu velit eu porttitor.
-            Pellentesque convallis nunc quis neque pretium, sed vehicula massa faucibus. Donec accumsan tortor et
-            aliquam consequat. Fusce imperdiet ac nisi a consectetur. Etiam sed odio lorem. Pellentesque et tortor
-            accumsan, ornare enim quis, cursus nisl. Aenean ac justo ex. Sed mattis cursus arcu ut feugiat. Morbi
-            lobortis, sem non porta viverra, magna massa condimentum enim, tempor tempor velit odio in metus. Sed cursus
-            egestas magna eu dapibus. In hac habitasse platea dictumst. Integer sed orci eget erat feugiat facilisis sit
-            amet nec ligula. Ut vitae porttitor nunc, vitae tempor eros. Nullam bibendum, est vel iaculis dapibus, erat
-            lorem pharetra nulla, eu bibendum sapien dolor a neque.
-          </p>
         </div>
       </div>
 
-			<div className="section section2"></div>
+      <div className="section section2" ref={section2Ref}>
+        <div className="body">
+          <h1 ref={title1Ref}>Parallax</h1>
+          <h1>Scroll</h1>
+          <div className="word">
+            <p>
+              {word.split('').map((letter, i) => {
+                return (
+                  <span key={`l_${i}`} ref={(el) => (lettersRef.current[i] = el)}>
+                    {letter}
+                  </span>
+                );
+              })}
+            </p>
+          </div>
+        </div>
+        <div className="images">
+          {images.map((image, i) => {
+            return (
+              <div key={`i_${i}`} ref={(el) => (imagesRef.current[i] = el)} className="image-container">
+                <img src={image} alt="Image" />
+              </div>
+            );
+          })}
+        </div>
+      </div>
+
+      <div className="section section3"></div>
     </div>
   );
 }
