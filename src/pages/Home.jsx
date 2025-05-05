@@ -1,6 +1,8 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { CustomEase, ScrollTrigger } from 'gsap/all';
+import { useScroll } from 'motion/react';
+import Slide from '../components/Slide/Slide';
 
 gsap.registerPlugin(ScrollTrigger, CustomEase);
 
@@ -26,23 +28,30 @@ export default function Home() {
       ' '
     );
 
+  const section3 = useRef();
+
+  const { scrollYProgress } = useScroll({
+    target: section3,
+    offset: ['start end', 'end start'],
+  });
+
   useEffect(() => {
     // change page background on scroll
 
     const darkSections = document.querySelectorAll('.section.dark');
     const whiteSections = document.querySelectorAll('.section.white');
 
-    const setDarkTheme = () => {
-      gsap.to('.content', { backgroundColor: '#0a0a0a', color: '#fff', duration: 0.2 });
-      gsap.to('.menu-toggle', { backgroundColor: '#fff' });
-      gsap.to('.menu-toggle span', { backgroundColor: '#0a0a0a' });
-    };
+    // const setDarkTheme = () => {
+    //   gsap.to('.content', { backgroundColor: '#0a0a0a', color: '#fff', duration: 0.2 });
+    //   gsap.to('.menu-toggle', { backgroundColor: '#fff' });
+    //   gsap.to('.menu-toggle span', { backgroundColor: '#0a0a0a' });
+    // };
 
-    const setLightTheme = () => {
-      gsap.to('.content', { backgroundColor: '#fff', color: '#0a0a0a', duration: 0.2 });
-      gsap.to('.menu-toggle', { backgroundColor: '#0a0a0a' });
-      gsap.to('.menu-toggle span', { backgroundColor: '#fff' });
-    };
+    // const setLightTheme = () => {
+    //   gsap.to('.content', { backgroundColor: '#fff', color: '#0a0a0a', duration: 0.2 });
+    //   gsap.to('.menu-toggle', { backgroundColor: '#0a0a0a' });
+    //   gsap.to('.menu-toggle span', { backgroundColor: '#fff' });
+    // };
 
     // darkSections.forEach((section) => {
     //   ScrollTrigger.create({
@@ -214,14 +223,10 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="section section3 dark">
-        <div className="box paragraph">
-          {paragraph1.map((word, index) => (
-            <div className="line" key={index}>
-              <div className="text">{word}&nbsp;</div>
-            </div>
-          ))}
-        </div>
+      <div className="section section3 dark" ref={section3}>
+        <Slide direction="left" left="-40%" progress={scrollYProgress} />
+        <Slide direction="right" left="-25%" progress={scrollYProgress} />
+        <Slide direction="left" left="-15%" progress={scrollYProgress} />
       </div>
 
       <div className="section section4 white">

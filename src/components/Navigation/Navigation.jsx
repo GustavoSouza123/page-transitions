@@ -1,5 +1,4 @@
 import React from 'react';
-import { NavLink } from 'react-router';
 import HeaderItem from './HeaderItem';
 import NavItem from './NavItem';
 

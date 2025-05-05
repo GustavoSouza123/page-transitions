@@ -39,7 +39,7 @@ body {
       text-decoration: none;
       color: #fff;
       overflow: hidden;
-			transform: translateY(-80px);
+      transform: translateY(-80px);
     }
   }
 }
@@ -133,7 +133,7 @@ body {
     gap: 48px;
 
     .box {
-      width: 800px;
+      max-width: 800px;
       justify-content: flex-start !important;
       line-height: 56px;
 
@@ -147,6 +147,11 @@ body {
         }
       }
     }
+  }
+
+  &.section3 {
+		flex-direction: column;
+    overflow: hidden;
   }
 
   &:not(.section1) {
@@ -202,6 +207,24 @@ body {
         font-size: 32px;
         transform: translateY(800%) rotate(0deg);
       }
+    }
+  }
+}
+
+.slide {
+  position: relative;
+  display: flex;
+	align-items: center;
+  white-space: nowrap;
+
+  .phrase {
+		display: flex;
+    gap: 20px;
+    align-items: center;
+    padding: 0 32px;
+
+    p {
+      font-size: 64px;
     }
   }
 }
