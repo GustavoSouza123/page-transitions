@@ -14,7 +14,7 @@ body {
 }
 
 ::-webkit-scrollbar {
-  display: none;
+  // display: none;
 }
 
 /* header and navigation */
@@ -308,7 +308,8 @@ body {
     background-color: #0a0a0a;
 
 		&.section2,
-		&.section4 {
+		&.section4,
+		&.section6 {
 			z-index: 99;
 		}
 
@@ -325,7 +326,16 @@ body {
 		&.section3 {
 			.image {
 				height: 150vh;
-				background: red;
+			}
+		}
+
+		&.section5 {
+			clip-path: polygon(0% 0, 100% 0%, 100% 100%, 0 100%);
+
+			.image {
+				position: fixed;
+				top: -400px;
+				height: calc(100vh + 400px);
 			}
 		}
   }

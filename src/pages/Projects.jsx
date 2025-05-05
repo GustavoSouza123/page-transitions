@@ -9,8 +9,10 @@ gsap.registerPlugin(ScrollTrigger);
 export default function Projects() {
   const section1Ref = useRef(null);
   const section3Ref = useRef(null);
+  const section5Ref = useRef(null);
   const image1Ref = useRef(null);
   const image2Ref = useRef(null);
+  const image3Ref = useRef(null);
 
   useEffect(() => {
     const tl1 = gsap.timeline({
@@ -52,6 +54,17 @@ export default function Projects() {
         },
       })
       .to(image2Ref.current, { y: -400, ease: 'none' });
+
+		const tl4 = gsap
+      .timeline({
+        scrollTrigger: {
+          trigger: section5Ref.current,
+          start: 'top bottom',
+          end: 'bottom top',
+          scrub: true,
+        },
+      })
+    .to(image3Ref.current, { y: 200, ease: 'none' });
 
     return () => {
       // cleanup when component unmounts
@@ -96,6 +109,14 @@ export default function Projects() {
       </div>
 
       <div className="section section4"></div>
+
+      <div className="section section5" ref={section5Ref}>
+        <div className="image" ref={image3Ref}>
+          <img src={Picture4} alt="Image" />
+        </div>
+      </div>
+
+      <div className="section section6"></div>
     </div>
   );
 }
