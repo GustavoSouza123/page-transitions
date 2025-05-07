@@ -104,7 +104,7 @@ export default function Projects() {
 
       <div className="section section3" ref={section3Ref}>
         <div className="image" ref={image2Ref}>
-          <img src={Picture4} alt="Image" />
+          <img src={Picture5} alt="Image" />
         </div>
       </div>
 

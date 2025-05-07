@@ -39,7 +39,8 @@ export default function Menu() {
     toggleMenuBtnColors(isOpen);
 
     if (!isOpen) {
-      gsap.to('body', { overflow: 'hidden' });
+			document.body.style.overflow = "hidden";
+			document.body.setAttribute("data-lenis-prevent", "true");
       gsap.to('.menu', { x: 0, duration: 0.7, ease: 'power3.inOut' });
       gsap.to('.menu nav .item', { x: 0, stagger: 0.05, duration: 0.7, delay: 0.1, ease: 'power3.inOut' });
     } else {
