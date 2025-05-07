@@ -33,18 +33,17 @@ export default function Menu() {
     gsap.to('.menu-toggle span', { backgroundColor: '#fff' });
   };
 
-  const toggleOpen = () => {
+  const toggleMenuOpen = () => {
     setIsOpen(!isOpen);
 
     toggleMenuBtnColors(isOpen);
 
     if (!isOpen) {
-			document.body.style.overflow = "hidden";
-			document.body.setAttribute("data-lenis-prevent", "true");
+      document.body.setAttribute('data-lenis-prevent', 'true');
       gsap.to('.menu', { x: 0, duration: 0.7, ease: 'power3.inOut' });
       gsap.to('.menu nav .item', { x: 0, stagger: 0.05, duration: 0.7, delay: 0.1, ease: 'power3.inOut' });
     } else {
-      gsap.to('body', { overflow: 'auto' });
+      document.body.removeAttribute('data-lenis-prevent');
       gsap.to('.menu', { x: 650, duration: 0.7, delay: 0.2, ease: 'power3.inOut' });
       gsap.to('.menu nav .item', { x: 150, stagger: 0.05, duration: 0.7, ease: 'power3.inOut' });
     }
@@ -52,7 +51,7 @@ export default function Menu() {
 
   return (
     <>
-      <div className="menu-toggle" onClick={toggleOpen}>
+      <div className="menu-toggle" onClick={toggleMenuOpen}>
         <div className="icon">
           <span></span>
           <span></span>
@@ -60,7 +59,7 @@ export default function Menu() {
         </div>
       </div>
       <div className="menu">
-        <Navigation parent="menu" />
+        <Navigation parent="menu" onMenuClick={toggleMenuOpen} />
       </div>
     </>
   );

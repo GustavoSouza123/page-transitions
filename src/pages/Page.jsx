@@ -3,13 +3,14 @@ import { Outlet } from 'react-router';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/all';
 import { ScrollSmoother } from 'gsap/ScrollSmoother';
+import Lenis from 'lenis';
 import Inner from '../components/inner';
 import Stairs from '../components/stairs';
 import Curve from '../components/curve';
 import Header from '../components/Navigation/Header';
 import Menu from '../components/Navigation/Menu';
 import SmoothScroll from '../components/SmoothScroll';
-import Lenis from 'lenis';
+import { getLenis } from '../utils/lenis';
 
 // const pageVariants = {
 //   initial: { opacity: 0, y: 20 },
@@ -27,15 +28,8 @@ export default function Page() {
     //   smoothTouch: 0.1,
     // });
 
-    const lenis = new Lenis();
-
-    function raf(time) {
-      lenis.raf(time);
-
-      requestAnimationFrame(raf);
-    }
-
-    requestAnimationFrame(raf);
+    const lenis = getLenis();
+    lenis.scrollTo(0, { immediate: true });
 
     // menu toggle button
 
