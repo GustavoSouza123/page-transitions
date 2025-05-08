@@ -39,11 +39,12 @@ export default function Menu() {
     toggleMenuBtnColors(isOpen);
 
     if (!isOpen) {
-      document.body.setAttribute('data-lenis-prevent', 'true');
+      /* todo: disable scrolling is not working */
+      // document.body.setAttribute('data-lenis-prevent', 'true');
       gsap.to('.menu', { x: 0, duration: 0.7, ease: 'power3.inOut' });
       gsap.to('.menu nav .item', { x: 0, stagger: 0.05, duration: 0.7, delay: 0.1, ease: 'power3.inOut' });
     } else {
-      document.body.removeAttribute('data-lenis-prevent');
+      // document.body.removeAttribute('data-lenis-prevent');
       gsap.to('.menu', { x: 650, duration: 0.7, delay: 0.2, ease: 'power3.inOut' });
       gsap.to('.menu nav .item', { x: 150, stagger: 0.05, duration: 0.7, ease: 'power3.inOut' });
     }

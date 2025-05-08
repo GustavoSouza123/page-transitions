@@ -21,11 +21,11 @@ export const perspective = {
 export const slide = {
   initial: {
     y: '100vh',
-		opacity: 0,
+		// opacity: 0,
   },
   enter: {
     y: '100vh',
-    opacity: 0,
+    // opacity: 0,
   },
   exit: {
     y: 0,

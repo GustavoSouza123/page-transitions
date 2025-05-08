@@ -101,14 +101,23 @@ body {
 
     .item {
       transform: translateX(150px);
+      height: 65px;
 
       a {
         position: relative;
         display: block;
-        font-size: 56px;
+        height: 100%;
+        font-size: 52px;
         text-decoration: none;
         color: #0a0a0a;
         overflow: hidden;
+
+        div {
+          height: 100%;
+          display: flex;
+          align-items: center;
+          padding-bottom: 12px;
+        }
       }
     }
   }
@@ -298,20 +307,20 @@ body {
 /* projects */
 
 .content.projects {
-	position: relative;
-	top: -80px;
+  position: relative;
+  top: -80px;
 
   .section {
     height: 100vh;
     position: relative;
-		top: 0;
+    top: 0;
     background-color: #0a0a0a;
 
-		&.section2,
-		&.section4,
-		&.section6 {
-			z-index: 99;
-		}
+    &.section2,
+    &.section4,
+    &.section6 {
+      z-index: 99;
+    }
 
     &.section1 {
       padding-top: calc(30px + 80px);
@@ -323,21 +332,21 @@ body {
       }
     }
 
-		&.section3 {
-			.image {
-				height: 150vh;
-			}
-		}
+    &.section3 {
+      .image {
+        height: 150vh;
+      }
+    }
 
-		&.section5 {
-			clip-path: polygon(0% 0, 100% 0%, 100% 100%, 0 100%);
+    &.section5 {
+      clip-path: polygon(0% 0, 100% 0%, 100% 100%, 0 100%);
 
-			.image {
-				position: fixed;
-				top: -400px;
-				height: calc(100vh + 400px);
-			}
-		}
+      .image {
+        position: fixed;
+        top: -400px;
+        height: calc(100vh + 400px);
+      }
+    }
   }
 
   .image {

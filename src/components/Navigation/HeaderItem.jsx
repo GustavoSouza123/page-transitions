@@ -6,8 +6,9 @@ export default function HeaderItem({ children, href }) {
   const MotionNavLink = motion.create(NavLink);
 
   const transition = {
-    duration: 0.5,
-    ease: [0, 0.96, 0.4, 1],
+    duration: 0.25,
+    // ease: [0, 0.96, 0.4, 1],
+		ease: [0.33, 0.71, 0.4, 0.99],
   };
 
   return (

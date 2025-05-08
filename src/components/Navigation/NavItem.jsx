@@ -1,13 +1,15 @@
 import React from 'react';
 import { NavLink } from 'react-router';
 import { motion } from 'motion/react';
+import gsap from 'gsap';
 
 export default function NavItem({ children, href, onMenuClick }) {
   const MotionNavLink = motion.create(NavLink);
 
   const transition = {
-    duration: 0.5,
-    ease: [0, 0.96, 0.4, 1],
+    duration: 0.25,
+    // ease: [0, 0.70, 0.4, 1],
+    ease: [0.33, 0.71, 0.4, 0.99],
   };
 
   const handleLinkClick = () => {

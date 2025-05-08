@@ -69,10 +69,12 @@ export default function Page() {
     //   transition={{ duration: 0.5 }}
     // ></motion.div>
 
-    <Inner>
-      <Header />
+    <>
       <Menu />
-      <Outlet />
-    </Inner>
+      <Inner>
+        <Header />
+        <Outlet />
+      </Inner>
+    </>
   );
 }

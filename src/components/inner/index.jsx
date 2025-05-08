@@ -17,9 +17,7 @@ export default function Inner({ children }) {
       {/* <motion.div className="slide2" {...anim(slide2)} /> */}
       <motion.div className="slide" {...anim(slide)} />
       <motion.div className="page" {...anim(perspective)}>
-        <motion.div {...anim(opacity)}>
-          {children}
-        </motion.div>
+        <motion.div {...anim(opacity)}>{children}</motion.div>
       </motion.div>
     </div>
   );
