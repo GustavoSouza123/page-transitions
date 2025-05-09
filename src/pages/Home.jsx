@@ -28,6 +28,8 @@ export default function Home() {
       ' '
     );
 
+  const paragraph3 = 'A closer look at my profile.'.split(' ');
+
   const section3 = useRef();
 
   const { scrollYProgress } = useScroll({
@@ -41,17 +43,17 @@ export default function Home() {
     const darkSections = document.querySelectorAll('.section.dark');
     const whiteSections = document.querySelectorAll('.section.white');
 
-    // const setDarkTheme = () => {
-    //   gsap.to('.content', { backgroundColor: '#0a0a0a', color: '#fff', duration: 0.2 });
-    //   gsap.to('.menu-toggle', { backgroundColor: '#fff' });
-    //   gsap.to('.menu-toggle span', { backgroundColor: '#0a0a0a' });
-    // };
+    const setDarkTheme = () => {
+      gsap.to('.content', { backgroundColor: '#0a0a0a', color: '#fff', duration: 0.2 });
+      gsap.to('.menu-toggle', { backgroundColor: '#fff' });
+      gsap.to('.menu-toggle span', { backgroundColor: '#0a0a0a' });
+    };
 
-    // const setLightTheme = () => {
-    //   gsap.to('.content', { backgroundColor: '#fff', color: '#0a0a0a', duration: 0.2 });
-    //   gsap.to('.menu-toggle', { backgroundColor: '#0a0a0a' });
-    //   gsap.to('.menu-toggle span', { backgroundColor: '#fff' });
-    // };
+    const setLightTheme = () => {
+      gsap.to('.content', { backgroundColor: '#fff', color: '#0a0a0a', duration: 0.2 });
+      gsap.to('.menu-toggle', { backgroundColor: '#0a0a0a' });
+      gsap.to('.menu-toggle span', { backgroundColor: '#fff' });
+    };
 
     // darkSections.forEach((section) => {
     //   ScrollTrigger.create({
@@ -71,6 +73,22 @@ export default function Home() {
     //     onEnter: setLightTheme,
     //     onLeaveBack: setDarkTheme,
     //   });
+    // });
+
+    // ScrollTrigger.create({
+    //   trigger: '.section4',
+    //   start: 'top 35%',
+    //   end: 'bottom 70%',
+    //   onEnter: setLightTheme,
+    //   onLeaveBack: setDarkTheme,
+    // });
+
+    // ScrollTrigger.create({
+    //   trigger: '.section5',
+    //   start: 'top 35%',
+    //   end: 'bottom 70%',
+    //   onEnter: setDarkTheme,
+    //   onLeaveBack: setLightTheme,
     // });
 
     // first section
@@ -125,11 +143,31 @@ export default function Home() {
 
     tl2.to('.section2 .paragraph .line .text', {
       y: 0,
-      stagger: 0.01,
+      stagger: 0.015,
       rotate: '0',
-      delay: 0.2,
+      // delay: 0.2,
       // ease: 'power2.out'
       // ease: CustomEase.create("custom", "M0,0 C0.126,0.382 0.146,0.676 0.304,0.824 0.496,1.004 0.818,1.001 1,1 "),
+      ease: CustomEase.create('custom', 'M0,0 C0.126,0.382 0.063,0.623 0.221,0.771 0.413,0.951 0.818,1.001 1,1 '),
+    });
+
+    const tl3 = gsap.timeline({
+      defaults: {
+        duration: 0.5,
+      },
+      scrollTrigger: {
+        trigger: '.section4',
+        start: 'top 35%',
+        end: 'bottom 70%',
+        toggleActions: 'play none none reverse',
+      },
+    });
+
+    tl3.to('.section4 .paragraph .line .text', {
+      y: 0,
+      // stagger: 0.01,
+      // delay: 0.2,
+      // ease: 'power2.out'
       ease: CustomEase.create('custom', 'M0,0 C0.126,0.382 0.063,0.623 0.221,0.771 0.413,0.951 0.818,1.001 1,1 '),
     });
 
@@ -153,7 +191,7 @@ export default function Home() {
         },
       });
 
-      if (index !== 0 && index !== 1) {
+      if (index !== 0 && index !== 1 && index !== 3) {
         sectionsTl.to(
           paragraph,
           {
@@ -231,7 +269,7 @@ export default function Home() {
 
       <div className="section section4 white">
         <div className="box paragraph">
-          {paragraph1.map((word, index) => (
+          {paragraph3.map((word, index) => (
             <div className="line" key={index}>
               <div className="text">{word}&nbsp;</div>
             </div>

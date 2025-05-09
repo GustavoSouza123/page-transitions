@@ -20,7 +20,7 @@ import { getLenis } from '../utils/lenis';
 
 gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
 
-export default function Page() {
+export default function Page() {0
   useEffect(() => {
     // ScrollSmoother.create({
     //   smooth: 1,

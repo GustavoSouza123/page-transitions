@@ -148,6 +148,16 @@ body {
 
 .content.home {
   .section {
+    &:not(.section1) {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      .box {
+        justify-content: center;
+      }
+    }
+
     &.section2 {
       flex-direction: column;
       gap: 48px;
@@ -174,13 +184,22 @@ body {
       overflow: hidden;
     }
 
-    &:not(.section1) {
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    &.section4 {
+      background-color: #ffffff;
+      color: #0a0a0a;
+      justify-content: flex-start;
+      align-items: flex-start;
 
       .box {
-        justify-content: center;
+				justify-content: flex-start;
+				width: 700px;
+
+        .line {
+          .text {
+            font-size: 96px;
+						transform: translateY(200%) rotate(0deg);
+          }
+        }
       }
     }
 
