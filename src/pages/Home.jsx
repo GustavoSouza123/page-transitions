@@ -40,20 +40,20 @@ export default function Home() {
   useEffect(() => {
     // change page background on scroll
 
-    const darkSections = document.querySelectorAll('.section.dark');
-    const whiteSections = document.querySelectorAll('.section.white');
+    // const darkSections = document.querySelectorAll('.section.dark');
+    // const whiteSections = document.querySelectorAll('.section.white');
 
-    const setDarkTheme = () => {
-      gsap.to('.content', { backgroundColor: '#0a0a0a', color: '#fff', duration: 0.2 });
-      gsap.to('.menu-toggle', { backgroundColor: '#fff' });
-      gsap.to('.menu-toggle span', { backgroundColor: '#0a0a0a' });
-    };
+    // const setDarkTheme = () => {
+    //   gsap.to('.content', { backgroundColor: '#2a2a2a', color: '#fff', duration: 0.2 });
+    //   gsap.to('.menu-toggle', { backgroundColor: '#fff' });
+    //   gsap.to('.menu-toggle span', { backgroundColor: '#2a2a2a' });
+    // };
 
-    const setLightTheme = () => {
-      gsap.to('.content', { backgroundColor: '#fff', color: '#0a0a0a', duration: 0.2 });
-      gsap.to('.menu-toggle', { backgroundColor: '#0a0a0a' });
-      gsap.to('.menu-toggle span', { backgroundColor: '#fff' });
-    };
+    // const setLightTheme = () => {
+    //   gsap.to('.content', { backgroundColor: '#fff', color: '#2a2a2a', duration: 0.2 });
+    //   gsap.to('.menu-toggle', { backgroundColor: '#2a2a2a' });
+    //   gsap.to('.menu-toggle span', { backgroundColor: '#fff' });
+    // };
 
     // darkSections.forEach((section) => {
     //   ScrollTrigger.create({
@@ -73,22 +73,6 @@ export default function Home() {
     //     onEnter: setLightTheme,
     //     onLeaveBack: setDarkTheme,
     //   });
-    // });
-
-    // ScrollTrigger.create({
-    //   trigger: '.section4',
-    //   start: 'top 35%',
-    //   end: 'bottom 70%',
-    //   onEnter: setLightTheme,
-    //   onLeaveBack: setDarkTheme,
-    // });
-
-    // ScrollTrigger.create({
-    //   trigger: '.section5',
-    //   start: 'top 35%',
-    //   end: 'bottom 70%',
-    //   onEnter: setDarkTheme,
-    //   onLeaveBack: setLightTheme,
     // });
 
     // first section
@@ -196,7 +180,7 @@ export default function Home() {
           paragraph,
           {
             y: 0,
-            stagger: 0.005,
+            stagger: 0.01,
             rotate: '0',
             // delay: 0.2,
             ease: 'expo.out',

@@ -17,19 +17,19 @@ export default function Menu() {
 
   const setDarkTheme = (isOpen) => {
     if (!isOpen) {
-      gsap.to('.menu', { backgroundColor: '#0a0a0a' });
+      gsap.to('.menu', { backgroundColor: '#2a2a2a' });
       gsap.to('.menu nav a', { color: '#fff' });
     }
     gsap.to('.menu-toggle', { backgroundColor: '#fff' });
-    gsap.to('.menu-toggle span', { backgroundColor: '#0a0a0a' });
+    gsap.to('.menu-toggle span', { backgroundColor: '#2a2a2a' });
   };
 
   const setLightTheme = (isOpen) => {
     if (!isOpen) {
       gsap.to('.menu', { backgroundColor: '#fff' });
-      gsap.to('.menu nav a', { color: '#0a0a0a' });
+      gsap.to('.menu nav a', { color: '#2a2a2a' });
     }
-    gsap.to('.menu-toggle', { backgroundColor: '#0a0a0a' });
+    gsap.to('.menu-toggle', { backgroundColor: '#2a2a2a' });
     gsap.to('.menu-toggle span', { backgroundColor: '#fff' });
   };
 
