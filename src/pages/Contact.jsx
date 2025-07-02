@@ -40,11 +40,11 @@ export default function Contact() {
         split2.lines,
         {
           delay: 0.5,
-          y: 50,
+          y: 35,
           autoAlpha: 0,
           stagger: 0.1,
           duration: 1,
-          ease: 'power1.out',
+          // ease: 'power1.out',
         },
         '<'
       )
