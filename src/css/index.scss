@@ -443,7 +443,13 @@ body {
         letter-spacing: -0.01em;
         word-spacing: -0.1em;
         line-height: 130%;
+				// visibility: hidden;
       }
+
+			&.p3 {
+				font-size: 48px;
+				font-weight: bold;
+			}
 
       .line {
         // border: 2px dashed red;
