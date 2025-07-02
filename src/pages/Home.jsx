@@ -1,10 +1,10 @@
 import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
-import { CustomEase, ScrollTrigger } from 'gsap/all';
+import { CustomEase, ScrollTrigger, SplitText } from 'gsap/all';
 import { useScroll } from 'motion/react';
 import Slide from '../components/Slide/Slide';
 
-gsap.registerPlugin(ScrollTrigger, CustomEase);
+gsap.registerPlugin(ScrollTrigger, SplitText, CustomEase);
 
 export default function Home() {
   // const subtitle =
@@ -113,27 +113,58 @@ export default function Home() {
 
     // second section
 
+    /* manual split text */
+
     const tl2 = gsap.timeline({
       defaults: {
-        duration: 0.5,
+        // duration: 0.5,
       },
       scrollTrigger: {
         trigger: '.section2',
         start: 'top 35%',
         end: 'bottom 70%',
-        toggleActions: 'play none none reverse',
+        toggleActions: 'play none none reset',
       },
     });
 
     tl2.to('.section2 .paragraph .line .text', {
       y: 0,
-      stagger: 0.015,
-      rotate: '0',
+      duration: 0.5,
+      stagger: 0.02,
       // delay: 0.2,
       // ease: 'power2.out'
-      // ease: CustomEase.create("custom", "M0,0 C0.126,0.382 0.146,0.676 0.304,0.824 0.496,1.004 0.818,1.001 1,1 "),
-      ease: CustomEase.create('custom', 'M0,0 C0.126,0.382 0.063,0.623 0.221,0.771 0.413,0.951 0.818,1.001 1,1 '),
+      // ease: CustomEase.create('custom', 'M0,0 C0.126,0.382 0.063,0.623 0.221,0.771 0.413,0.951 0.818,1.001 1,1'),
+      ease: CustomEase.create('custom', 'M0,0 C0.011,0.417 0.469,0.997 1,1.005 '),
     });
+
+    /* SplitText plugin */
+
+    const section2Split = SplitText.create('.section2 .right', {
+      type: 'words, lines',
+      mask: 'lines',
+      wordsClass: 'word',
+    });
+
+    const tlSplit = gsap.timeline({
+      defaults: {},
+      scrollTrigger: {
+        trigger: '.section2',
+        start: 'top 35%',
+        end: 'bottom 70%',
+        toggleActions: 'play none none reset',
+      },
+    });
+
+    tlSplit.from(section2Split.lines, {
+      yPercent: 90,
+      // autoAlpha: 0,
+      stagger: 0.06,
+      duration: 0.8,
+      // ease: 'power2.out',
+      ease: CustomEase.create('custom', 'M0,0 C0.022,0.238 0.157,0.98 1,1.005 '),
+    });
+
+    // fourth section
 
     const tl3 = gsap.timeline({
       defaults: {
@@ -229,19 +260,28 @@ export default function Home() {
       </div>
 
       <div className="section section2 white">
-        <div className="box paragraph">
-          {paragraph21.map((word, index) => (
-            <div className="line" key={index}>
-              <div className="text">{word}&nbsp;</div>
-            </div>
-          ))}
+        <div className="left">
+          <div className="box paragraph">
+            {paragraph21.map((word, index) => (
+              <div className="line" key={index}>
+                <div className="text">{word}&nbsp;</div>
+              </div>
+            ))}
+          </div>
+          <div className="box paragraph">
+            {paragraph22.map((word, index) => (
+              <div className="line" key={index}>
+                <div className="text">{word}&nbsp;</div>
+              </div>
+            ))}
+          </div>
         </div>
-        <div className="box paragraph">
-          {paragraph22.map((word, index) => (
-            <div className="line" key={index}>
-              <div className="text">{word}&nbsp;</div>
-            </div>
-          ))}
+        <div className="right">
+          Our approach at OH Architecture is designed to make your journey from concept to completion as smooth and
+          enjoyable as possible.
+          <div className="line-break"></div>
+          With our 6-stages plan, we prioritize clarity, collaboration, and your unique vision. Each stage is crafted to
+          keep you informed, inspired, and involved.
         </div>
       </div>
 

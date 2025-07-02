@@ -1,12 +1,13 @@
 import React, { useEffect } from 'react';
 import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/all';
-import SplitText from 'gsap/SplitText';
+import { ScrollTrigger, CustomEase, SplitText } from 'gsap/all';
 
-gsap.registerPlugin(ScrollTrigger, SplitText);
+gsap.registerPlugin(ScrollTrigger, SplitText, CustomEase);
 
 export default function Contact() {
   useEffect(() => {
+    /* section 1 */
+
     const split1 = SplitText.create('.section1 .paragraph.p1', {
       type: 'words, lines',
       linesClass: 'line',
@@ -23,7 +24,7 @@ export default function Contact() {
       // child tweens will inherit these defaults
       defaults: {
         // ease: 'expo.out',
-        //duration: 1,
+        // duration: 1,
       },
     });
 
@@ -39,14 +40,15 @@ export default function Contact() {
       .from(
         split2.lines,
         {
-          delay: 0.5,
-          y: 35,
-          autoAlpha: 0,
+          delay: 1,
+          y: 25,
+          // autoAlpha: 0,
           stagger: 0.1,
-          duration: 1,
+          duration: 0.8,
           // ease: 'power1.out',
+					ease: CustomEase.create('custom', 'M0,0 C0.022,0.238 0.157,0.98 1,1.005 '),
         },
-        '<'
+        '<-0.3'
       )
       .to(
         '.header nav a',
@@ -57,6 +59,35 @@ export default function Contact() {
         },
         '<'
       );
+
+    /* section 2 */
+
+    const split3 = SplitText.create('.section2 .paragraph.p1', {
+      type: 'words, lines',
+      mask: 'lines',
+    });
+
+    const tl2 = gsap.timeline({
+      // child tweens will inherit these defaults
+      defaults: {
+        // ease: 'expo.out',
+        // duration: 1,
+      },
+      scrollTrigger: {
+        trigger: '.section2',
+        start: 'top 70%',
+        end: 'bottom 90%',
+        toggleActions: 'play none none none',
+      },
+    });
+
+    tl2.from(split3.lines, {
+      y: 50,
+      autoAlpha: 0,
+      stagger: 0.1,
+      duration: 0.8,
+      ease: 'power2.out',
+    });
 
     return () => {
       // cleanup when component unmounts
@@ -81,7 +112,16 @@ export default function Contact() {
         </div>
       </div>
 
-      {/* <div className="section section2"></div> */}
+      <div className="section section2">
+        <div className="body">
+          <div className="paragraph p1">
+            I’m a creative developer and digital designer from São Paulo, Brazil. I focus on building websites with
+            seamless motion, interaction, and performance.
+          </div>
+        </div>
+      </div>
+
+      <div className="section section3"></div>
     </div>
   );
 }
