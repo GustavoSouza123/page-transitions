@@ -1,7 +1,7 @@
 @use 'base';
-@use '../components/inner/style.scss' as style1;
-@use '../components/stairs/style.scss' as style2;
-@use '../components/curve/style.scss' as style3;
+@use '../components/Transitions/inner/style.scss' as style1;
+@use '../components/Transitions/stairs/style.scss' as style2;
+@use '../components/Transitions/curve/style.scss' as style3;
 
 * {
   box-sizing: border-box;
