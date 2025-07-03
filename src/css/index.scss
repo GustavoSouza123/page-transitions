@@ -159,9 +159,9 @@ body {
     }
 
     &.section2 {
-			justify-content: space-between;
+      justify-content: space-between;
       gap: 48px;
-			background: #1a1a1a;
+      background: #1a1a1a;
 
       & > div {
         width: 50%;
@@ -178,15 +178,15 @@ body {
           font-weight: 500;
           line-height: 55px;
 
-					.line-break {
-						width: 100%;
-						height: 48px;
-					}
+          .line-break {
+            width: 100%;
+            height: 48px;
+          }
 
-					.word {
-						position: relative;
-						bottom: 6px;
-					}
+          .word {
+            position: relative;
+            bottom: 6px;
+          }
         }
       }
 
@@ -435,7 +435,7 @@ body {
         letter-spacing: -0.03em;
         word-spacing: -0.1em;
         line-height: 130%;
-				// visibility: hidden;
+        // visibility: hidden;
       }
 
       &.p2 {
@@ -443,13 +443,13 @@ body {
         letter-spacing: -0.01em;
         word-spacing: -0.1em;
         line-height: 130%;
-				// visibility: hidden;
+        // visibility: hidden;
       }
 
-			&.p3 {
-				font-size: 48px;
-				font-weight: bold;
-			}
+      &.p3 {
+        font-size: 48px;
+        font-weight: bold;
+      }
 
       .line {
         // border: 2px dashed red;
@@ -473,6 +473,19 @@ body {
     display: flex;
     justify-content: center;
     background-color: #1a1a1a;
+  }
+
+  .section3 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 160px;
+    letter-spacing: -0.03em;
+    line-height: 90%;
+
+    .word {
+      // background: red;
+    }
   }
 }
 

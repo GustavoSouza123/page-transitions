@@ -29,7 +29,7 @@ export default function Contact() {
             {
               // delay: 0.5,
               y: 50,
-              autoAlpha: 0,
+              // autoAlpha: 0,
               stagger: 0.1,
               duration: 0.8,
               ease: 'power2.out',
@@ -137,6 +137,42 @@ export default function Contact() {
           '>-0.5'
           // '>'
         );
+
+      /* section 3 */
+
+      const tl3 = gsap.timeline({
+        // child tweens will inherit these defaults
+        defaults: {
+          // ease: 'expo.out',
+          // duration: 1,
+        },
+        scrollTrigger: {
+          trigger: '.section3',
+          start: 'top 90%',
+          end: 'bottom 90%',
+          toggleActions: 'play none none none',
+        },
+      });
+
+      const split6 = SplitText.create('.section3', {
+        type: 'chars, words, lines',
+        wordsClass: 'word',
+        mask: 'lines',
+        onSplit: (self) => {
+          // 1
+          tl3.from(
+            self.chars,
+            {
+              // delay: 0.5,
+              y: 120,
+              stagger: 0.1,
+              duration: 1.5,
+              ease: CustomEase.create("custom", "M0,0 C0.657,0.127 0.088,0.847 1,1 "),
+            },
+            '0.5'
+          );
+        },
+      });
     });
 
     return () => {
@@ -180,7 +216,7 @@ export default function Contact() {
         </div>
       </div>
 
-      <div className="section section3"></div>
+      <div className="section section3">I am Gustavo Souza</div>
     </div>
   );
 }
