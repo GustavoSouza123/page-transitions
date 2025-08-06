@@ -167,7 +167,7 @@ export default function Contact() {
               y: 120,
               stagger: 0.1,
               duration: 1.5,
-              ease: CustomEase.create("custom", "M0,0 C0.657,0.127 0.088,0.847 1,1 "),
+              ease: CustomEase.create('custom', 'M0,0 C0.657,0.127 0.088,0.847 1,1 '),
             },
             '0.5'
           );

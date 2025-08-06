@@ -142,6 +142,7 @@ export default function Home() {
     const section2Split = SplitText.create('.section2 .right', {
       type: 'words, lines',
       mask: 'lines',
+			linesClass: 'line',
       wordsClass: 'word',
     });
 
